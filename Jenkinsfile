@@ -22,5 +22,19 @@ pipeline{
         }
 
         // Add the "Deploy" stage here
+	stage('Deploy') {
+
+	    steps {
+
+		sh '''
+
+		    oc project ehlflq-jenkins
+		    oc start-build greeting-service --follow --wait
+
+		'''
+
+	    }
+
+	}	
     }
 }
